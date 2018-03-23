@@ -31,8 +31,7 @@ namespace CheeseMVC.Controllers
 
         public IActionResult Add()
         {
-            var allcategories = context.Categories.ToList(); 
-            AddCheeseViewModel addCheeseViewModel = new AddCheeseViewModel(allcategories);
+            AddCheeseViewModel addCheeseViewModel = new AddCheeseViewModel(context.Categories.ToList());
             return View(addCheeseViewModel);
         }
 
@@ -43,7 +42,7 @@ namespace CheeseMVC.Controllers
             if (ModelState.IsValid)
             {
                 // this will fetch a single CheeseCategory object, with ID matching the CategoryID value selected
-                CheeseCategory newCheeseCategory = context.Categories.SingleOrDefault(c => c.ID == addCheeseViewModel.CategoryID);
+                CheeseCategory newCheeseCategory = context.Categories.Single(c => c.ID == addCheeseViewModel.CategoryID);
 
                 // Add the new cheese to my existing cheeses
                 // creation of the newCheese object

@@ -11,8 +11,8 @@ using System;
 namespace CheeseMVC.Migrations
 {
     [DbContext(typeof(CheeseDbContext))]
-    [Migration("20180322113936_SecondMigration")]
-    partial class SecondMigration
+    [Migration("20180322233917_FirstNewMigration")]
+    partial class FirstNewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
