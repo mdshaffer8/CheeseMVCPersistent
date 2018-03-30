@@ -56,6 +56,7 @@ namespace CheeseMVC.Controllers
             return View(addMenuViewModel);
         }
 
+        [HttpGet]
         public IActionResult ViewMenu(int id)
         {
             Menu newMenu = context.Menus.Single(m => m.ID == id);
@@ -86,6 +87,7 @@ namespace CheeseMVC.Controllers
             return View(new AddMenuItemViewModel(theMenu, cheeses));
         }
 
+        [HttpPost]
         public IActionResult AddItem(AddMenuItemViewModel addMenuItemViewModel)
         {
             if (ModelState.IsValid)
