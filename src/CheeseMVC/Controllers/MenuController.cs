@@ -30,7 +30,7 @@ namespace CheeseMVC.Controllers
             return View(menus);
         }
 
-        
+        [HttpGet]
         public IActionResult Add()
         {
             AddMenuViewModel addMenuViewModel = new AddMenuViewModel();
@@ -77,6 +77,7 @@ namespace CheeseMVC.Controllers
             return View(viewMenuViewModel);
         }
 
+        [HttpGet]
         public IActionResult AddItem(int id)
         {
             Menu theMenu = context.Menus.Single(m => m.ID == id);
