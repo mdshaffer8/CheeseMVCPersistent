@@ -75,16 +75,18 @@ namespace CheeseMVC.Controllers
                 
             };
 
+            //ViewBag.Title = viewMenuViewModel.Menu.Name;
+
             return View(viewMenuViewModel);
         }
 
         [HttpGet]
         public IActionResult AddItem(int id)
         {
-            Menu theMenu = context.Menus.Single(m => m.ID == id);
+            Menu newMenu = context.Menus.Single(m => m.ID == id);
             List<Cheese> cheeses = context.Cheeses.ToList();
 
-            return View(new AddMenuItemViewModel(theMenu, cheeses));
+            return View(new AddMenuItemViewModel(newMenu, cheeses));
         }
 
         [HttpPost]
@@ -93,8 +95,8 @@ namespace CheeseMVC.Controllers
             if (ModelState.IsValid)
             {
                 IList<CheeseMenu> existingItems = context.CheeseMenus
-                    .Where(cm => cm.CheeseID == Add.MenuItemViewModel.CheeseID)
-                    .Where(CheeseMenu => cm.MenuID == addMenuItemViewModel.MenuID).ToList();
+                    .Where(cm => cm.CheeseID == addMenuItemViewModel.CheeseID)
+                    .Where(cm => cm.MenuID == addMenuItemViewModel.MenuID).ToList();
 
                 if (existingItems.Count == 0)
                 {
